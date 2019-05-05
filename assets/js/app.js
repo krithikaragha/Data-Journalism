@@ -1,5 +1,5 @@
 // @TODO: YOUR CODE HERE!
-var svgWidth = 960;
+var svgWidth = 750;
 var svgHeight = 500;
 
 var margin = {
@@ -61,6 +61,28 @@ d3.csv("data.csv").then(function(censusData) {
       .attr("r", "15")
       .attr("fill", "rgb(117, 145, 197)") 
       .attr("opacity", "0.5");
+
+    // Add state labels to the points
+    var circleLabels = chartGroup.selectAll(null)
+      .data(censusData)
+      .enter()
+      .append("text");
+
+    circleLabels
+      .attr("x", function(d) {
+        return xLinearScale(d.poverty);
+      })
+      .attr("y", function(d) {
+        return yLinearScale(d.healthcare);
+      })
+      .text(function(d) {
+        return d.abbr;
+      })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "12px")
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "middle")
+      .attr("fill", "white");
 
     // Create axes labels
     chartGroup.append("text")
