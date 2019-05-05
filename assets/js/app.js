@@ -1,4 +1,3 @@
-// @TODO: YOUR CODE HERE!
 var svgWidth = 750;
 var svgHeight = 500;
 
@@ -122,22 +121,4 @@ d3.csv("data.csv").then(function(censusData) {
 
 });
 
-/*
-// Add state labels
-    chartGroup.selectAll("text")
-      .data(data_scatter)
-      .enter()
-      .append("text")
-      .text(function(d) {
-        return d.state;
-      })
-      .attr("x", function(d) {
-        return xLinearScale(d.state);  // Returns scaled location of x
-      })
-      .attr("y", function(d) {
-        return yLinearScale(d.state);  // Returns scaled circle y
-      })
-      .attr("font_family", "sans-serif")  // Font type
-      .attr("font-size", "9px")  // Font size
-      .attr("fill", "white");
-*/
+
