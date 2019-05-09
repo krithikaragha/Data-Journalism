@@ -69,6 +69,7 @@
 .axisText {
   font-family: sans-serif;
   font-weight: bold;
+  font-size: 15px;
   fill: #4a82cc;
   text-anchor: middle;
 }

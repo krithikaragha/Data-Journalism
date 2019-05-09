@@ -83,10 +83,10 @@ d3.csv("data.csv").then(function(censusData) {
       .attr("text-anchor", "middle")
       .attr("fill", "white");
 
-    // Create axes labels
+    // Create Y-axis labels
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left + 40)
+      .attr("y", 0 - margin.left + 50)
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
@@ -94,10 +94,41 @@ d3.csv("data.csv").then(function(censusData) {
       .text("Lacks Healthcare (%)");
 
     chartGroup.append("text")
-      .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 30)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .attr("class", "axisText")
+      .style("text-anchor", "middle")
+      .text("Smokes (%)");
+    
+    // Create X-axis labels
+    chartGroup.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 10)
+      .attr("x", 0 - (height / 2))
+      .attr("dy", "1em")
+      .attr("class", "axisText")
+      .style("text-anchor", "middle")
+      .text("Obese (%)");
+
+    chartGroup.append("text")
+      .attr("transform", `translate(${width / 2}, ${height + margin.top + 10})`)
       .attr("class", "axisText")
       .style("text-anchor", "middle")
       .text("In Poverty (%)");
+
+    chartGroup.append("text")
+      .attr("transform", `translate(${width / 2}, ${height + margin.top + 25})`)
+      .attr("class", "axisText")
+      .style("text-anchor", "middle")
+      .text("Age (Median)");
+
+    chartGroup.append("text")
+      .attr("transform", `translate(${width / 2}, ${height + margin.top + 40})`)
+      .attr("class", "axisText")
+      .style("text-anchor", "middle")
+      .text("Household Income (Median)");
 
     // Initialize tooltip
     var toolTip = d3.tip() 
