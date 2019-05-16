@@ -29,7 +29,7 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Create a group element with SVG for y-axis labels
+// Append a group element for y-axis labels
 chartGroup.append("g").attr("class", "yLabel");
 var yLabel = d3.select(".yLabel");
 
@@ -70,7 +70,7 @@ yLabel
   .style("text-anchor", "middle")
   .text("Obese (%)");
 
-// Create a group element with SVG for x-axis labels
+// Append a group element for x-axis labels
 chartGroup.append("g").attr("class", "xLabel");
 var xLabel = d3.select(".xLabel");
 
@@ -167,9 +167,9 @@ d3.csv("data.csv").then(function(censusData) {
     function changeLabel(axis, textClicked) {
         // Toggle between active/inactive classes for the axis
         d3
-          .selectAll(".aText")
-          .filter("." + axis)
-          .filter(".active")
+          .selectAll(".aText") // select all X and Y labels
+          .filter("." + axis)  // grab appropriate X or Y label
+          .filter(".active")   // grab the active label
           .classed("active", false)
           .classed("inactive", true);
 
@@ -265,11 +265,11 @@ d3.csv("data.csv").then(function(censusData) {
 
       // Execute if label is inactive
       if(self.classed("inactive")) {
-        // Grab the name and axis 
+        // Grab the axis and its label name
         var axis = self.attr("data-axis");
         var name = self.attr("data-name");
 
-        // Execute if x-axis label is inactive
+        // Execute if axis is X-axis
         if (axis === "x") {
 
           // Set currentX to be equal to the label name
@@ -296,7 +296,7 @@ d3.csv("data.csv").then(function(censusData) {
                 .duration(300);
           });
 
-          // Update the location of the circle labels with state abbreviations
+          // Update the location of the circle labels 
           d3.selectAll(".stateText").each(function() {
               // Define a transition for each label
               d3
@@ -311,7 +311,7 @@ d3.csv("data.csv").then(function(censusData) {
           // Change classes for last active label and the label which was clicked
           changeLabel(axis, self);
         }
-        // Execute if y-axis label is inactive
+        // Execute if axis is Y-axis
         else {
 
           // Set currentY to be equal to the label name
@@ -338,7 +338,7 @@ d3.csv("data.csv").then(function(censusData) {
                 .duration(300);
           });
 
-          // Update the location of the circle labels with state abbreviations
+          // Update the location of the circle labels 
           d3.selectAll(".stateText").each(function() {
               // Define a transition for each label
               d3
